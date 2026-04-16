@@ -1,0 +1,5 @@
+# Netlify clean URL rules
+# Strip .html from address bar
+/index      /           301
+/apply      /apply.html 200
+/*          /:splat.html 200

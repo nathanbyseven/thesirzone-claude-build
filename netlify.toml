@@ -1,0 +1,14 @@
+# Netlify configuration — clean URLs
+
+[build]
+  publish = "."
+
+# Remove .html from all URLs automatically
+[[plugins]]
+
+# Pretty URLs: /apply instead of /apply.html
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true
