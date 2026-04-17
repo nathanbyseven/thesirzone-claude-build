@@ -92,7 +92,7 @@
   }
   @keyframes marquee {
     from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    to { transform: translateX(-25%); }
   }
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
@@ -178,6 +178,13 @@
     background: linear-gradient(135deg, var(--off-white) 0%, #e0f0e8 50%, #cce8d8 100%);
     position: relative; overflow: hidden;
     padding: 120px 0 80px;
+  }
+  #home::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.4;
   }
   .hero-bg-shape {
     position: absolute; top: -100px; right: -150px;
@@ -270,15 +277,15 @@
   .marquee-wrap {
     overflow: hidden;
     width: 100%;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
   }
   .marquee-track {
     display: flex;
     gap: 80px;
     align-items: center;
     width: max-content;
-    animation: marquee 22s linear infinite;
+    animation: marquee 24s linear infinite;
     will-change: transform;
   }
   .marquee-track:hover { animation-play-state: paused; }
@@ -288,6 +295,7 @@
     transition: opacity .3s, filter .3s;
     flex-shrink: 0;
     user-select: none;
+    pointer-events: none;
   }
 
   /* ── MORE THAN TUTORING ── */
@@ -322,13 +330,19 @@
 
   /* ── STATS ── */
   .stats-section {
-    background: var(--green);
+    background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 60%, #2d9e5a 100%);
     padding: 72px 0;
     position: relative; overflow: hidden;
   }
   .stats-section::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
     background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .stats-section::after {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 70%);
+    border-radius: 50%; pointer-events: none;
   }
   .stats-grid {
     display: grid; grid-template-columns: repeat(4, 1fr);
@@ -369,8 +383,14 @@
     background: linear-gradient(135deg, var(--green-pale) 0%, transparent 60%);
     opacity: 0; transition: opacity .3s;
   }
+  .subject-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--green); transform: scaleX(0); transition: transform .3s;
+    transform-origin: left;
+  }
   .subject-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--green); }
   .subject-card:hover::before { opacity: 1; }
+  .subject-card:hover::after { transform: scaleX(1); }
   .subject-icon { width: 64px; height: 64px; margin-bottom: 20px; display: block; position: relative; z-index: 1; }
   .subject-icon img { width: 100%; height: 100%; object-fit: contain; }
   .subject-name { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 10px; position: relative; z-index: 1; }
@@ -679,6 +699,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="https://thesirzone.ghost.io/" target="_blank" rel="noopener">Blog</a></li>
     </ul>
     <div class="nav-right">
       <a href="apply.html" class="btn btn-primary">Apply Now</a>
@@ -696,6 +717,7 @@
   <a href="#about" onclick="closeMobile()">About</a>
   <a href="#pricing" onclick="closeMobile()">Pricing</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="https://thesirzone.ghost.io/" target="_blank" rel="noopener" onclick="closeMobile()">Blog</a>
   <a href="apply.html" class="btn btn-primary">Apply Now</a>
 </div>
 
@@ -717,7 +739,9 @@
       <div class="hero-image-wrap">
         <img src="https://i.ibb.co/tp61ztr7/Card-01.png" alt="Sirzone Tutoring" class="hero-img" />
         <div class="hero-badge">
-          <div class="hero-badge-icon">🎓</div>
+          <div class="hero-badge-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
           <div class="hero-badge-text">
             <strong>30+ Years</strong>
             <span>Helping Learners Succeed</span>
@@ -738,7 +762,16 @@
       <img src="https://i.ibb.co/j97JTnsM/image-4.png" alt="WCED" />
       <img src="https://i.ibb.co/zWH6jhPY/image-1.png" alt="SHAWCO" />
       <img src="https://i.ibb.co/tPQKHYZc/image-3.png" alt="IAHET" />
-      <!-- set 2 — exact duplicate so animation loops at -50% -->
+      <img src="https://i.ibb.co/nNNzRsSB/Group-1.png" alt="UWC" />
+      <img src="https://i.ibb.co/hRR2yNYY/image-2.png" alt="Stellenbosch" />
+      <img src="https://i.ibb.co/j97JTnsM/image-4.png" alt="WCED" />
+      <img src="https://i.ibb.co/zWH6jhPY/image-1.png" alt="SHAWCO" />
+      <img src="https://i.ibb.co/tPQKHYZc/image-3.png" alt="IAHET" />
+      <img src="https://i.ibb.co/nNNzRsSB/Group-1.png" alt="UWC" />
+      <img src="https://i.ibb.co/hRR2yNYY/image-2.png" alt="Stellenbosch" />
+      <img src="https://i.ibb.co/j97JTnsM/image-4.png" alt="WCED" />
+      <img src="https://i.ibb.co/zWH6jhPY/image-1.png" alt="SHAWCO" />
+      <img src="https://i.ibb.co/tPQKHYZc/image-3.png" alt="IAHET" />
       <img src="https://i.ibb.co/nNNzRsSB/Group-1.png" alt="UWC" />
       <img src="https://i.ibb.co/hRR2yNYY/image-2.png" alt="Stellenbosch" />
       <img src="https://i.ibb.co/j97JTnsM/image-4.png" alt="WCED" />
@@ -1164,7 +1197,7 @@
           <input type="hidden" name="_subject" value="New Contact from Sirzone Website"/>
           <button type="submit" class="btn btn-primary form-submit">Send Message →</button>
         </form>
-        <div class="success-msg" id="successMsg">✓ Message sent! We'll be in touch shortly.</div>
+        <div class="success-msg" id="successMsg">Message sent — we'll be in touch shortly.</div>
       </div>
     </div>
   </div>
@@ -1196,6 +1229,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="https://thesirzone.ghost.io/" target="_blank" rel="noopener">Blog</a></li>
         </ul>
       </div>
       <div>
@@ -1264,10 +1298,18 @@ pageSections.forEach(s => sectionObserver.observe(s));
 
 // Handle direct visits to clean URLs e.g. sirzone.co.za/pricing -> scroll there
 (function() {
-  const raw = window.location.pathname.replace(/^\//, '');
-  if (raw && raw !== 'index.html') {
+  const raw = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
+  if (raw && raw !== 'index.html' && raw !== 'index') {
     const el = document.getElementById(raw);
-    if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 150);
+    if (el) {
+      // Wait for page to fully render before scrolling
+      const doScroll = () => el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (document.readyState === 'complete') {
+        setTimeout(doScroll, 200);
+      } else {
+        window.addEventListener('load', () => setTimeout(doScroll, 200));
+      }
+    }
   }
 })();
 

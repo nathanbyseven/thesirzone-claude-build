@@ -3,6 +3,10 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/home", "destination": "/index.html" },
+    { "source": "/about", "destination": "/index.html" },
+    { "source": "/pricing", "destination": "/index.html" },
+    { "source": "/faq", "destination": "/index.html" },
+    { "source": "/contact", "destination": "/index.html" },
     { "source": "/apply", "destination": "/apply.html" }
   ],
   "redirects": [
