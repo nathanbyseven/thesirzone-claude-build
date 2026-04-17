@@ -151,6 +151,7 @@
     transition: all .2s;
   }
   .nav-links a:hover { background: var(--green-pale); color: var(--green-dark); }
+  .nav-links a.active-link { background: var(--green-pale); color: var(--green-dark); font-weight: 700; }
   .nav-right { display: flex; gap: 12px; align-items: center; }
   .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; background: none; border: none; }
   .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
@@ -264,19 +265,30 @@
     text-align: center; font-size: 13px; font-weight: 600; color: var(--text-light);
     letter-spacing: .06em; text-transform: uppercase;
     margin-bottom: 28px;
+    padding: 0 32px;
   }
-  .marquee-wrap { overflow: hidden; }
+  .marquee-wrap {
+    overflow: hidden;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
   .marquee-track {
-    display: flex; gap: 64px; align-items: center;
+    display: flex;
+    gap: 80px;
+    align-items: center;
     width: max-content;
-    animation: marquee 25s linear infinite;
+    animation: marquee 22s linear infinite;
+    will-change: transform;
   }
   .marquee-track:hover { animation-play-state: paused; }
   .marquee-track img {
-    height: 36px; object-fit: contain; opacity: .55; filter: grayscale(1);
+    height: 36px; object-fit: contain;
+    opacity: .5; filter: grayscale(1);
     transition: opacity .3s, filter .3s;
+    flex-shrink: 0;
+    user-select: none;
   }
-  .marquee-track img:hover { opacity: 1; filter: grayscale(0); }
 
   /* ── MORE THAN TUTORING ── */
   .mtt-grid {
@@ -718,22 +730,20 @@
 
 <!-- ── TRUST STRIP ── -->
 <section class="trust-strip">
-  <div class="container">
-    <p class="trust-label">Trusted through years of teaching, mentorship, and academic development across leading institutions</p>
-    <div class="marquee-wrap">
-      <div class="marquee-track">
-        <img src="https://i.ibb.co/nNNzRsSB/Group-1.png" alt="UWC" />
-        <img src="https://i.ibb.co/hRR2yNYY/image-2.png" alt="Stellenbosch" />
-        <img src="https://i.ibb.co/j97JTnsM/image-4.png" alt="WCED" />
-        <img src="https://i.ibb.co/zWH6jhPY/image-1.png" alt="SHAWCO" />
-        <img src="https://i.ibb.co/tPQKHYZc/image-3.png" alt="IAHET" />
-        <!-- duplicate for seamless loop -->
-        <img src="https://i.ibb.co/nNNzRsSB/Group-1.png" alt="UWC" />
-        <img src="https://i.ibb.co/hRR2yNYY/image-2.png" alt="Stellenbosch" />
-        <img src="https://i.ibb.co/j97JTnsM/image-4.png" alt="WCED" />
-        <img src="https://i.ibb.co/zWH6jhPY/image-1.png" alt="SHAWCO" />
-        <img src="https://i.ibb.co/tPQKHYZc/image-3.png" alt="IAHET" />
-      </div>
+  <p class="trust-label">Trusted through years of teaching, mentorship, and academic development across leading institutions</p>
+  <div class="marquee-wrap">
+    <div class="marquee-track" aria-hidden="true">
+      <img src="https://i.ibb.co/nNNzRsSB/Group-1.png" alt="UWC" />
+      <img src="https://i.ibb.co/hRR2yNYY/image-2.png" alt="Stellenbosch" />
+      <img src="https://i.ibb.co/j97JTnsM/image-4.png" alt="WCED" />
+      <img src="https://i.ibb.co/zWH6jhPY/image-1.png" alt="SHAWCO" />
+      <img src="https://i.ibb.co/tPQKHYZc/image-3.png" alt="IAHET" />
+      <!-- set 2 — exact duplicate so animation loops at -50% -->
+      <img src="https://i.ibb.co/nNNzRsSB/Group-1.png" alt="UWC" />
+      <img src="https://i.ibb.co/hRR2yNYY/image-2.png" alt="Stellenbosch" />
+      <img src="https://i.ibb.co/j97JTnsM/image-4.png" alt="WCED" />
+      <img src="https://i.ibb.co/zWH6jhPY/image-1.png" alt="SHAWCO" />
+      <img src="https://i.ibb.co/tPQKHYZc/image-3.png" alt="IAHET" />
     </div>
   </div>
 </section>
@@ -1219,6 +1229,47 @@ const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 40);
 });
+
+// ── CLEAN URLS: update address bar as user scrolls ──
+const sectionPaths = {
+  'home':     '/',
+  'programs': '/programs',
+  'pricing':  '/pricing',
+  'faq':      '/faq',
+  'contact':  '/contact'
+};
+const pageSections = Object.keys(sectionPaths)
+  .map(id => document.getElementById(id))
+  .filter(Boolean);
+
+let urlTimer;
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      clearTimeout(urlTimer);
+      urlTimer = setTimeout(() => {
+        const id = entry.target.id;
+        const path = sectionPaths[id] || '/';
+        window.history.replaceState(null, '', path);
+        // Highlight active nav link
+        document.querySelectorAll('.nav-links a').forEach(a => {
+          a.classList.toggle('active-link', a.getAttribute('href') === '#' + id);
+        });
+      }, 80);
+    }
+  });
+}, { threshold: 0.35 });
+
+pageSections.forEach(s => sectionObserver.observe(s));
+
+// Handle direct visits to clean URLs e.g. sirzone.co.za/pricing -> scroll there
+(function() {
+  const raw = window.location.pathname.replace(/^\//, '');
+  if (raw && raw !== 'index.html') {
+    const el = document.getElementById(raw);
+    if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 150);
+  }
+})();
 
 // ── MOBILE MENU ──
 const hamburger = document.getElementById('hamburger');
