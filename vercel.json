@@ -2,15 +2,16 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/home", "destination": "/index.html" },
-    { "source": "/about", "destination": "/index.html" },
-    { "source": "/pricing", "destination": "/index.html" },
-    { "source": "/faq", "destination": "/index.html" },
-    { "source": "/contact", "destination": "/index.html" },
-    { "source": "/apply", "destination": "/apply.html" }
+    { "source": "/home",     "destination": "/" },
+    { "source": "/about",    "destination": "/" },
+    { "source": "/programs", "destination": "/" },
+    { "source": "/pricing",  "destination": "/" },
+    { "source": "/faq",      "destination": "/" },
+    { "source": "/contact",  "destination": "/" },
+    { "source": "/apply",    "destination": "/apply" }
   ],
   "redirects": [
-    { "source": "/index", "destination": "/", "permanent": true },
+    { "source": "/index",      "destination": "/", "permanent": true },
     { "source": "/index.html", "destination": "/", "permanent": true },
     { "source": "/apply.html", "destination": "/apply", "permanent": true }
   ]
