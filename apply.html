@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Apply — The Sirzone</title>
-  <link rel="icon" type="image/png" href="https://i.ibb.co/5W5B5C25/Asset-1-4x.png" />
+<title>Apply — Sirzone Academic Acceleration Program</title>
+<link rel="icon" type="image/png" href="https://i.ibb.co/5W5B5C25/Asset-1-4x.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -22,293 +22,159 @@
     --white: #ffffff;
     --off-white: #f5faf6;
     --border: #d4e8da;
+    --border-strong: #b8d8c4;
     --error: #dc2626;
-    --error-bg: #fef2f2;
-    --radius: 16px;
-    --radius-sm: 10px;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --radius-lg: 14px;
     --shadow: 0 4px 24px rgba(10,50,20,0.10);
     --shadow-lg: 0 8px 48px rgba(10,50,20,0.16);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--off-white);
-    color: var(--text);
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-  /* Subtle grid background pattern on the page */
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: radial-gradient(var(--border) 1px, transparent 1px);
-    background-size: 32px 32px;
-    pointer-events: none;
-    opacity: 0.5;
-    z-index: 0;
-  }
-  .app-wrap { position: relative; z-index: 1; }
+  body { font-family: 'Inter', sans-serif; background: var(--off-white); color: var(--text); line-height: 1.6; min-height: 100vh; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(var(--border) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.45; z-index: 0; }
 
   /* ── HEADER ── */
-  .app-header {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 32px;
-    display: flex; align-items: center; justify-content: space-between;
-    position: sticky; top: 0; z-index: 50;
-  }
-  .app-header img { height: 32px; }
-  .back-link {
-    font-size: 14px; font-weight: 600; color: var(--text-mid);
-    text-decoration: none; display: flex; align-items: center; gap: 6px;
-    transition: color .2s;
-  }
+  .app-header { background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
+  .app-header img { height: 30px; }
+  .back-link { font-size: 13px; font-weight: 600; color: var(--text-mid); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color .2s; }
   .back-link:hover { color: var(--green); }
 
   /* ── LAYOUT ── */
-  .app-wrap {
-    max-width: 720px; margin: 0 auto; padding: 40px 20px 80px;
-  }
+  .app-wrap { max-width: 780px; margin: 0 auto; padding: 40px 24px 100px; position: relative; z-index: 1; }
 
   /* ── PROGRESS ── */
-  .progress-bar-wrap { margin-bottom: 40px; }
-  .progress-steps {
-    display: flex; align-items: center; gap: 0; margin-bottom: 12px;
-  }
-  .progress-step {
-    display: flex; align-items: center; flex: 1;
-  }
+  .progress-bar-wrap { margin-bottom: 36px; }
+  .progress-steps { display: flex; align-items: center; margin-bottom: 10px; }
+  .progress-step { display: flex; align-items: center; flex: 1; }
   .progress-step:last-child { flex: 0; }
-  .step-dot {
-    width: 32px; height: 32px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; font-weight: 800; flex-shrink: 0;
-    transition: all .3s;
-    border: 2px solid var(--border);
-    background: var(--white);
-    color: var(--text-light);
-    position: relative; z-index: 1;
-  }
-  .step-dot.done {
-    background: var(--green); border-color: var(--green); color: var(--white);
-  }
-  .step-dot.active {
-    background: var(--green); border-color: var(--green); color: var(--white);
-    box-shadow: 0 0 0 4px rgba(26,122,60,.15);
-  }
-  .step-line {
-    flex: 1; height: 2px; background: var(--border); transition: background .3s;
-    margin: 0 -1px;
-  }
+  .step-dot { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; flex-shrink: 0; transition: all .3s; border: 2px solid var(--border); background: var(--white); color: var(--text-light); position: relative; z-index: 1; }
+  .step-dot.done { background: var(--green); border-color: var(--green); color: var(--white); }
+  .step-dot.active { background: var(--green); border-color: var(--green); color: var(--white); box-shadow: 0 0 0 4px rgba(26,122,60,.15); }
+  .step-line { flex: 1; height: 2px; background: var(--border); transition: background .3s; margin: 0 -1px; }
   .step-line.done { background: var(--green); }
-  .progress-labels {
-    display: flex; justify-content: space-between; padding: 0 2px;
-  }
-  .progress-label {
-    font-size: 10px; font-weight: 600; color: var(--text-light);
-    text-transform: uppercase; letter-spacing: .04em; text-align: center;
-    flex: 1; transition: color .3s;
-  }
+  .progress-labels { display: flex; justify-content: space-between; padding: 0 2px; }
+  .progress-label { font-size: 10px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: .04em; text-align: center; flex: 1; transition: color .3s; }
   .progress-label.active { color: var(--green); }
   .progress-label.done { color: var(--green-dark); }
-  .progress-meta {
-    text-align: right; font-size: 12px; color: var(--text-light); font-weight: 600;
-  }
+  .progress-meta { text-align: right; font-size: 11px; color: var(--text-light); font-weight: 600; margin-top: 6px; }
 
-  /* ── CARDS ── */
-  .step-card {
-    background: var(--white); border-radius: 20px;
-    border: 1px solid var(--border);
-    padding: 40px; box-shadow: var(--shadow);
-    display: none;
-    animation: fadeSlide .35s ease both;
-  }
+  /* ── STEP CARDS ── */
+  @keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .step-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 44px 48px; display: none; animation: fadeSlide .3s ease both; box-shadow: var(--shadow); }
   .step-card.active { display: block; }
-  @keyframes fadeSlide {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  @media(max-width:600px) { .step-card { padding: 28px 22px; } }
 
   /* ── INTRO CARD ── */
-  .intro-icon {
-    width: 64px; height: 64px; background: var(--green-pale);
-    border-radius: 18px; display: flex; align-items: center; justify-content: center;
-    margin-bottom: 24px;
-  }
-  .intro-icon svg { width: 30px; height: 30px; }
-  .intro-title {
-    font-size: 28px; font-weight: 900; color: var(--dark); letter-spacing: -.02em;
-    margin-bottom: 10px; line-height: 1.15;
-  }
-  .intro-desc { font-size: 15px; color: var(--text-mid); line-height: 1.7; margin-bottom: 28px; }
-  .intro-features {
-    list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;
-    background: var(--off-white); border-radius: var(--radius-sm); padding: 20px 24px;
-  }
-  .intro-features li {
-    display: flex; align-items: center; gap: 12px;
-    font-size: 14px; font-weight: 600; color: var(--text);
-  }
-  .intro-features li::before {
-    content: ''; width: 20px; height: 20px; flex-shrink: 0;
-    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='10' fill='%231a7a3c'/%3E%3Cpath d='M6 10l3 3 5-5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
-  }
+  .intro-icon { width: 60px; height: 60px; background: var(--green-pale); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+  .intro-icon svg { width: 28px; height: 28px; }
+  .intro-title { font-size: 28px; font-weight: 900; color: var(--dark); letter-spacing: -.025em; margin-bottom: 10px; line-height: 1.15; }
+  .intro-subtitle { font-size: 14px; color: var(--text-mid); line-height: 1.65; margin-bottom: 8px; }
+  .intro-tagline { font-size: 13px; color: var(--text-light); font-style: italic; margin-bottom: 28px; }
+  .intro-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; background: var(--off-white); border-radius: var(--radius); padding: 20px 24px; border: 1px solid var(--border); }
+  .intro-features li { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 600; color: var(--text); }
+  .intro-features li::before { content: ''; width: 18px; height: 18px; flex-shrink: 0; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='10' fill='%231a7a3c'/%3E%3Cpath d='M6 10l3 3 5-5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat; }
 
   /* ── STEP HEADERS ── */
-  .step-eyebrow {
-    font-size: 11px; font-weight: 700; color: var(--green);
-    letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px;
-  }
-  .step-title-text {
-    font-size: 24px; font-weight: 900; color: var(--dark); margin-bottom: 6px; letter-spacing: -.02em;
-  }
-  .step-desc { font-size: 14px; color: var(--text-mid); margin-bottom: 32px; }
+  .step-eyebrow { font-size: 11px; font-weight: 700; color: var(--green); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
+  .step-title-text { font-size: 24px; font-weight: 900; color: var(--dark); margin-bottom: 6px; letter-spacing: -.02em; line-height: 1.2; }
+  .step-desc { font-size: 14px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.6; }
   .divider { height: 1px; background: var(--border); margin: 28px 0; }
+  .section-label { font-size: 11px; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 16px; margin-top: 8px; }
 
   /* ── FORM ELEMENTS ── */
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+  .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
   .form-group.full { grid-column: 1/-1; }
-  label {
-    font-size: 13px; font-weight: 600; color: var(--text);
-  }
+  label { font-size: 11px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: .04em; }
   label .req { color: var(--green); }
-  input[type="text"], input[type="email"], input[type="tel"], input[type="date"],
-  input[type="number"], select, textarea {
-    padding: 12px 16px; border: 1.5px solid var(--border);
+  input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea {
+    padding: 11px 14px; border: 1.5px solid var(--border);
     border-radius: var(--radius-sm); font-family: 'Inter', sans-serif;
     font-size: 14px; color: var(--text); background: var(--off-white);
-    outline: none; transition: border-color .2s, box-shadow .2s, background .2s;
-    width: 100%;
-    appearance: none;
+    outline: none; transition: border-color .2s, box-shadow .2s, background .2s; width: 100%; appearance: none;
   }
-  select {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%237a9882' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 14px center; background-size: 16px;
-    padding-right: 40px; cursor: pointer;
-  }
-  input:focus, select:focus, textarea:focus {
-    border-color: var(--green); box-shadow: 0 0 0 3px rgba(26,122,60,.1); background: var(--white);
-  }
-  input.error, select.error, textarea.error {
-    border-color: var(--error); box-shadow: 0 0 0 3px rgba(220,38,38,.08);
-  }
+  select { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%237a9882' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 16px; padding-right: 40px; cursor: pointer; }
+  input:focus, select:focus, textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(26,122,60,.1); background: var(--white); }
+  input.error, select.error, textarea.error { border-color: var(--error); box-shadow: 0 0 0 3px rgba(220,38,38,.08); }
   .error-msg { font-size: 12px; color: var(--error); font-weight: 500; display: none; }
   .error-msg.show { display: block; }
   textarea { resize: vertical; min-height: 90px; }
   input[type="number"] { -moz-appearance: textfield; }
-  input[type="number"]::-webkit-outer-spin-button,
-  input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
   /* ── CHECKBOXES ── */
-  .checkbox-group { display: flex; flex-direction: column; gap: 12px; }
-  .checkbox-item {
-    display: flex; align-items: flex-start; gap: 12px;
-    background: var(--off-white); border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm); padding: 14px 16px; cursor: pointer;
-    transition: all .2s; user-select: none;
-  }
+  .checkbox-group { display: flex; flex-direction: column; gap: 10px; }
+  .checkbox-item { display: flex; align-items: flex-start; gap: 12px; background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; cursor: pointer; transition: all .2s; user-select: none; }
   .checkbox-item:hover { border-color: var(--green); background: var(--green-pale); }
   .checkbox-item.checked { border-color: var(--green); background: var(--green-pale); }
-  .cb-box {
-    width: 20px; height: 20px; border: 2px solid var(--border);
-    border-radius: 5px; flex-shrink: 0; margin-top: 1px;
-    display: flex; align-items: center; justify-content: center;
-    transition: all .2s; background: var(--white);
-  }
+  .cb-box { width: 19px; height: 19px; border: 2px solid var(--border); border-radius: 4px; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: all .2s; background: var(--white); }
   .checkbox-item.checked .cb-box { background: var(--green); border-color: var(--green); }
   .cb-check { display: none; }
   .checkbox-item.checked .cb-check { display: block; }
   .cb-label { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.4; }
   input[type="checkbox"] { display: none; }
 
-  /* ── RADIO PLANS ── */
+  /* ── SUBJECT SELECTORS ── */
+  .subject-checks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .subject-check { border: 2px solid var(--border); border-radius: var(--radius); padding: 20px 12px; cursor: pointer; text-align: center; transition: all .2s; background: var(--white); user-select: none; }
+  .subject-check:hover { border-color: var(--green); }
+  .subject-check.selected { border-color: var(--green); background: var(--green-pale); }
+  .subject-check-icon { width: 32px; height: 32px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; }
+  .subject-check-icon svg { width: 26px; height: 26px; }
+  .subject-check-name { font-size: 13px; font-weight: 700; color: var(--dark); line-height: 1.3; }
+  .subject-check-tick { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border); margin: 8px auto 0; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+  .subject-check.selected .subject-check-tick { background: var(--green); border-color: var(--green); }
+
+  /* ── PLAN OPTIONS ── */
   .plan-options { display: flex; flex-direction: column; gap: 12px; }
-  .plan-option {
-    display: flex; align-items: center; gap: 16px;
-    border: 2px solid var(--border); border-radius: var(--radius-sm);
-    padding: 20px 24px; cursor: pointer; transition: all .2s; background: var(--white);
-    user-select: none;
-  }
+  .plan-option { border: 2px solid var(--border); border-radius: var(--radius); padding: 20px 22px; cursor: pointer; transition: all .2s; background: var(--white); user-select: none; }
   .plan-option:hover { border-color: var(--green); }
   .plan-option.selected { border-color: var(--green); background: var(--green-pale); }
-  .radio-dot {
-    width: 20px; height: 20px; border-radius: 50%;
-    border: 2px solid var(--border); flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    transition: all .2s;
-  }
+  .plan-option-header { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+  .radio-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all .2s; }
   .plan-option.selected .radio-dot { border-color: var(--green); }
-  .radio-inner {
-    width: 10px; height: 10px; border-radius: 50%;
-    background: var(--green); display: none;
-  }
+  .radio-inner { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: none; }
   .plan-option.selected .radio-inner { display: block; }
-  .plan-option-info { flex: 1; }
-  .plan-option-name { font-size: 15px; font-weight: 800; color: var(--dark); }
-  .plan-option-detail { font-size: 13px; color: var(--text-light); margin-top: 2px; }
-  .plan-option-price {
-    font-size: 18px; font-weight: 900; color: var(--green);
-    letter-spacing: -.02em;
-  }
+  .plan-option-name { font-size: 15px; font-weight: 800; color: var(--dark); flex: 1; }
+  .plan-option-price { font-size: 17px; font-weight: 900; color: var(--green); letter-spacing: -.02em; }
   .plan-option.selected .plan-option-price { color: var(--green-dark); }
+  .plan-option-detail { font-size: 12px; color: var(--text-light); margin-bottom: 10px; padding-left: 32px; }
+  .plan-features-inline { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; padding-left: 32px; }
+  .plan-features-inline li { font-size: 12px; color: var(--text-mid); display: flex; gap: 6px; align-items: flex-start; }
+  .plan-features-inline li::before { content: ''; display: inline-block; width: 14px; height: 14px; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='9' cy='9' r='9' fill='%231a7a3c'/%3E%3Cpath d='M5 9l3 3 5-5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat; flex-shrink: 0; margin-top: 1px; }
+  .plan-popular-tag { background: var(--dark); color: var(--white); font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 3px; letter-spacing: .06em; text-transform: uppercase; }
   input[type="radio"] { display: none; }
 
-  /* ── COMMITMENT SECTION ── */
-  .commitment-header {
-    background: var(--dark-2); border-radius: var(--radius-sm);
-    padding: 20px 24px; margin-bottom: 24px;
-  }
-  .commitment-header p {
-    font-size: 14px; font-weight: 600; color: rgba(255,255,255,.75); line-height: 1.55;
-  }
+  /* ── PAYMENT NOTE ── */
+  .payment-note { background: var(--off-white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 18px; font-size: 12px; color: var(--text-mid); line-height: 1.6; margin-top: 16px; }
+
+  /* ── COMMITMENT HEADER ── */
+  .commitment-header { background: var(--dark-2); border-radius: var(--radius-sm); padding: 18px 22px; margin-bottom: 20px; }
+  .commitment-header p { font-size: 14px; font-weight: 600; color: rgba(255,255,255,.75); line-height: 1.55; }
   .commitment-header strong { color: var(--white); }
 
   /* ── REVIEW SECTION ── */
-  .review-section { margin-bottom: 24px; }
-  .review-section-title {
-    font-size: 11px; font-weight: 800; color: var(--text-light);
-    letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px;
-  }
-  .review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .review-item {
-    background: var(--off-white); border-radius: var(--radius-sm); padding: 12px 16px;
-    border: 1px solid var(--border);
-  }
-  .review-item-label { font-size: 11px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 3px; }
-  .review-item-value { font-size: 14px; font-weight: 700; color: var(--dark); }
-  .review-plan {
-    background: var(--green-pale); border: 1px solid var(--green);
-    border-radius: var(--radius-sm); padding: 16px 20px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .review-plan-name { font-size: 15px; font-weight: 800; color: var(--green-dark); }
-  .review-plan-price { font-size: 18px; font-weight: 900; color: var(--green); }
+  .review-section { margin-bottom: 20px; }
+  .review-section-title { font-size: 10px; font-weight: 800; color: var(--text-light); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; }
+  .review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .review-item { background: var(--off-white); border-radius: var(--radius-sm); padding: 11px 14px; border: 1px solid var(--border); }
+  .review-item-label { font-size: 10px; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 3px; }
+  .review-item-value { font-size: 13px; font-weight: 700; color: var(--dark); }
+  .review-plan { background: var(--green-pale); border: 1px solid var(--green); border-radius: var(--radius-sm); padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .review-plan-name { font-size: 14px; font-weight: 800; color: var(--green-dark); }
+  .review-plan-price { font-size: 17px; font-weight: 900; color: var(--green); }
 
-  /* ── CONFIRM CHECKBOX ── */
-  .confirm-check {
-    background: var(--off-white); border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm); padding: 18px 20px;
-    display: flex; align-items: flex-start; gap: 14px;
-    cursor: pointer; transition: all .2s; margin-bottom: 28px; user-select: none;
-  }
+  /* ── CONFIRM CHECK ── */
+  .confirm-check { background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; display: flex; align-items: flex-start; gap: 14px; cursor: pointer; transition: all .2s; margin-bottom: 24px; user-select: none; }
   .confirm-check:hover { border-color: var(--green); }
   .confirm-check.checked { border-color: var(--green); background: var(--green-pale); }
-  .confirm-check .cb-box { margin-top: 2px; }
   .confirm-text { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.5; }
 
   /* ── BUTTONS ── */
-  .btn-row {
-    display: flex; gap: 12px; align-items: center; justify-content: space-between;
-    margin-top: 32px;
-  }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 28px; border-radius: 100px;
-    font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700;
-    cursor: pointer; border: none; transition: all .25s; text-decoration: none;
-  }
+  .btn-row { display: flex; gap: 12px; align-items: center; justify-content: space-between; margin-top: 28px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: var(--radius); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; border: none; transition: all .25s; text-decoration: none; }
   .btn-primary { background: var(--green); color: var(--white); }
   .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,122,60,.3); }
   .btn-primary:disabled { opacity: .6; cursor: not-allowed; transform: none; box-shadow: none; }
@@ -316,61 +182,24 @@
   .btn-secondary:hover { border-color: var(--green); color: var(--green); }
   .btn-full { width: 100%; justify-content: center; }
 
-  /* ── SUCCESS ── */
-  .success-screen {
-    text-align: center; padding: 20px 0;
-  }
-  .success-icon {
-    width: 80px; height: 80px; background: var(--green-pale);
-    border-radius: 50%; margin: 0 auto 24px;
-    display: flex; align-items: center; justify-content: center;
-    animation: popIn .5s ease both;
-  }
-  .success-icon svg { width: 36px; height: 36px; }
-  @keyframes popIn {
-    from { transform: scale(.5); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
-  .success-title { font-size: 32px; font-weight: 900; color: var(--dark); margin-bottom: 12px; letter-spacing: -.02em; }
-  .success-msg { font-size: 16px; color: var(--text-mid); max-width: 420px; margin: 0 auto 32px; line-height: 1.65; }
-  .success-wa {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: #25d366; color: white; border-radius: 100px;
-    padding: 14px 28px; text-decoration: none; font-weight: 700; font-size: 15px;
-    transition: all .2s; margin-bottom: 20px;
-  }
+  /* ── SUCCESS SCREEN ── */
+  @keyframes popIn { from { transform: scale(.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .success-screen { text-align: center; padding: 20px 0; }
+  .success-icon { width: 76px; height: 76px; background: var(--green-pale); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; animation: popIn .5s ease both; }
+  .success-icon svg { width: 34px; height: 34px; }
+  .success-title { font-size: 30px; font-weight: 900; color: var(--dark); margin-bottom: 12px; letter-spacing: -.02em; }
+  .success-msg-text { font-size: 15px; color: var(--text-mid); max-width: 420px; margin: 0 auto 32px; line-height: 1.65; }
+  .success-wa { display: inline-flex; align-items: center; gap: 10px; background: #25d366; color: white; border-radius: var(--radius); padding: 13px 26px; text-decoration: none; font-weight: 700; font-size: 14px; transition: all .2s; margin-bottom: 16px; }
   .success-wa:hover { background: #128c39; transform: translateY(-2px); }
-  .success-back { display: block; font-size: 14px; color: var(--text-light); text-decoration: none; transition: color .2s; }
+  .success-back { display: block; font-size: 13px; color: var(--text-light); text-decoration: none; transition: color .2s; }
   .success-back:hover { color: var(--green); }
 
-  /* ── SUBJECTS CHECKBOXES ── */
-  .subject-checks { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
-  .subject-check {
-    border: 2px solid var(--border); border-radius: var(--radius-sm);
-    padding: 16px 12px; cursor: pointer; text-align: center;
-    transition: all .2s; background: var(--white); user-select: none;
-  }
-  .subject-check:hover { border-color: var(--green); }
-  .subject-check.selected { border-color: var(--green); background: var(--green-pale); }
-  .subject-check-icon {
-    width: 32px; height: 32px; margin: 0 auto 6px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .subject-check-icon svg { width: 28px; height: 28px; }
-  .subject-check-name { font-size: 13px; font-weight: 700; color: var(--dark); }
-  .subject-check-tick {
-    width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--border);
-    margin: 8px auto 0; display: flex; align-items: center; justify-content: center;
-    transition: all .2s;
-  }
-  .subject-check.selected .subject-check-tick { background: var(--green); border-color: var(--green); }
-
-  @media(max-width:600px) {
+  @media(max-width:600px){
     .app-wrap { padding: 24px 16px 60px; }
-    .step-card { padding: 24px 20px; }
     .form-row { grid-template-columns: 1fr; }
     .review-grid { grid-template-columns: 1fr; }
     .subject-checks { grid-template-columns: 1fr 1fr; }
+    .plan-features-inline { grid-template-columns: 1fr; }
     .btn-row { flex-direction: column-reverse; }
     .btn-row .btn { width: 100%; justify-content: center; }
     .progress-label { font-size: 8px; }
@@ -380,10 +209,8 @@
 <body>
 
 <header class="app-header">
-  <a href="index.html">
-    <img src="https://i.ibb.co/4nwyyZ90/Group-10.png" alt="The Sirzone"/>
-  </a>
-  <a href="index.html" class="back-link">
+  <a href="/"><img src="https://i.ibb.co/4nwyyZ90/Group-10.png" alt="The Sirzone"/></a>
+  <a href="/" class="back-link">
     <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     Back to website
   </a>
@@ -394,39 +221,22 @@
   <!-- Progress Bar -->
   <div class="progress-bar-wrap" id="progressWrap">
     <div class="progress-steps" id="progressSteps">
-      <div class="progress-step">
-        <div class="step-dot active" id="dot-0">1</div>
-        <div class="step-line" id="line-0"></div>
-      </div>
-      <div class="progress-step">
-        <div class="step-dot" id="dot-1">2</div>
-        <div class="step-line" id="line-1"></div>
-      </div>
-      <div class="progress-step">
-        <div class="step-dot" id="dot-2">3</div>
-        <div class="step-line" id="line-2"></div>
-      </div>
-      <div class="progress-step">
-        <div class="step-dot" id="dot-3">4</div>
-        <div class="step-line" id="line-3"></div>
-      </div>
-      <div class="progress-step">
-        <div class="step-dot" id="dot-4">5</div>
-        <div class="step-line" id="line-4"></div>
-      </div>
-      <div class="progress-step">
-        <div class="step-dot" id="dot-5">6</div>
-      </div>
+      <div class="progress-step"><div class="step-dot active" id="dot-0">1</div><div class="step-line" id="line-0"></div></div>
+      <div class="progress-step"><div class="step-dot" id="dot-1">2</div><div class="step-line" id="line-1"></div></div>
+      <div class="progress-step"><div class="step-dot" id="dot-2">3</div><div class="step-line" id="line-2"></div></div>
+      <div class="progress-step"><div class="step-dot" id="dot-3">4</div><div class="step-line" id="line-3"></div></div>
+      <div class="progress-step"><div class="step-dot" id="dot-4">5</div><div class="step-line" id="line-4"></div></div>
+      <div class="progress-step"><div class="step-dot" id="dot-5">6</div></div>
     </div>
     <div class="progress-labels">
       <div class="progress-label active" id="lbl-0">Intro</div>
       <div class="progress-label" id="lbl-1">Details</div>
       <div class="progress-label" id="lbl-2">Academic</div>
-      <div class="progress-label" id="lbl-3">Commit</div>
+      <div class="progress-label" id="lbl-3">Commitment</div>
       <div class="progress-label" id="lbl-4">Plan</div>
       <div class="progress-label" id="lbl-5">Review</div>
     </div>
-    <div class="progress-meta" id="progressMeta">Step 1 of 6</div>
+    <div class="progress-meta" id="progressMeta">Step 1 of 5</div>
   </div>
 
   <!-- STEP 0: INTRO -->
@@ -434,13 +244,14 @@
     <div class="intro-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="13" y2="11"/></svg>
     </div>
-    <h1 class="intro-title">Apply to Join<br/>The Sirzone</h1>
-    <p class="intro-desc">This is a structured academic tutoring programme designed for learners who are ready to improve through consistency, effort, and guided support.</p>
+    <h1 class="intro-title">Apply for the Sirzone Academic Acceleration Program</h1>
+    <p class="intro-subtitle">Complete the application below to help us understand the learner's goals, academic needs, and the best mentorship plan to support their progress.</p>
+    <p class="intro-tagline">This program is designed for learners who are ready to improve through consistency, accountability, and expert guidance.</p>
     <ul class="intro-features">
-      <li>Weekly structured sessions</li>
-      <li>Task-based learning</li>
-      <li>Continuous feedback</li>
-      <li>WhatsApp support</li>
+      <li>Structured weekly mentorship sessions</li>
+      <li>Personalised guidance and accountability</li>
+      <li>Task-based learning with direct feedback</li>
+      <li>Ongoing WhatsApp support between sessions</li>
     </ul>
     <button class="btn btn-primary btn-full" onclick="nextStep()">Start Application →</button>
   </div>
@@ -448,24 +259,25 @@
   <!-- STEP 1: LEARNER DETAILS -->
   <div class="step-card" id="step-1">
     <p class="step-eyebrow">Step 1 of 5</p>
-    <h2 class="step-title-text">Learner Details</h2>
-    <p class="step-desc">Tell us about the learner who will be joining the programme.</p>
+    <h2 class="step-title-text">Tell Us About the Learner</h2>
+    <p class="step-desc">Share the key details of the learner and parent or guardian so we can begin the application.</p>
+    <div class="section-label">Learner Information</div>
     <div class="form-row">
       <div class="form-group">
         <label for="learnerName">Learner Full Name <span class="req">*</span></label>
-        <input type="text" id="learnerName" placeholder="Full name" />
+        <input type="text" id="learnerName" placeholder="Full name"/>
         <span class="error-msg" id="err-learnerName">Please enter the learner's full name.</span>
       </div>
       <div class="form-group">
         <label for="dob">Date of Birth <span class="req">*</span></label>
-        <input type="date" id="dob" />
+        <input type="date" id="dob"/>
         <span class="error-msg" id="err-dob">Please enter the date of birth.</span>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group">
         <label for="school">School Name <span class="req">*</span></label>
-        <input type="text" id="school" placeholder="Name of school" />
+        <input type="text" id="school" placeholder="Name of school"/>
         <span class="error-msg" id="err-school">Please enter the school name.</span>
       </div>
       <div class="form-group">
@@ -480,21 +292,22 @@
       </div>
     </div>
     <div class="divider"></div>
+    <div class="section-label">Parent / Guardian Information</div>
     <div class="form-row">
       <div class="form-group">
-        <label for="parentName">Parent/Guardian Name <span class="req">*</span></label>
-        <input type="text" id="parentName" placeholder="Full name" />
+        <label for="parentName">Parent / Guardian Name <span class="req">*</span></label>
+        <input type="text" id="parentName" placeholder="Full name"/>
         <span class="error-msg" id="err-parentName">Please enter the parent/guardian name.</span>
       </div>
       <div class="form-group">
-        <label for="parentPhone">Parent Contact Number <span class="req">*</span></label>
-        <input type="tel" id="parentPhone" placeholder="e.g. 079 000 0000" />
+        <label for="parentPhone">Contact Number <span class="req">*</span></label>
+        <input type="tel" id="parentPhone" placeholder="e.g. 079 000 0000"/>
         <span class="error-msg" id="err-parentPhone">Please enter a contact number.</span>
       </div>
     </div>
     <div class="form-group">
       <label for="emailAddr">Email Address <span class="req">*</span></label>
-      <input type="email" id="emailAddr" placeholder="email@example.com" />
+      <input type="email" id="emailAddr" placeholder="email@example.com"/>
       <span class="error-msg" id="err-emailAddr">Please enter a valid email address.</span>
     </div>
     <div class="btn-row">
@@ -503,20 +316,20 @@
     </div>
   </div>
 
-  <!-- STEP 2: ACADEMIC INFO -->
+  <!-- STEP 2: ACADEMIC PROFILE -->
   <div class="step-card" id="step-2">
     <p class="step-eyebrow">Step 2 of 5</p>
-    <h2 class="step-title-text">Academic Information</h2>
-    <p class="step-desc">Help us understand the learner's current academic standing.</p>
+    <h2 class="step-title-text">Current Academic Profile</h2>
+    <p class="step-desc">Help us understand the learner's current academic standing, goals, and areas that need support.</p>
     <div class="form-row">
       <div class="form-group">
-        <label for="mathMark">Last Mathematics Mark (%) <span class="req">*</span></label>
-        <input type="number" id="mathMark" placeholder="e.g. 65" min="0" max="100" />
+        <label for="mathMark">Current Maths Mark (%) <span class="req">*</span></label>
+        <input type="number" id="mathMark" placeholder="e.g. 65" min="0" max="100"/>
         <span class="error-msg" id="err-mathMark">Please enter a mark between 0 and 100.</span>
       </div>
       <div class="form-group">
-        <label for="sciMark">Last Physical Sciences Mark (%)</label>
-        <input type="number" id="sciMark" placeholder="e.g. 58" min="0" max="100" />
+        <label for="sciMark">Current Physical Sciences Mark (%)</label>
+        <input type="number" id="sciMark" placeholder="e.g. 58" min="0" max="100"/>
       </div>
     </div>
     <div class="form-group" style="margin-bottom:6px;">
@@ -528,34 +341,32 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </div>
         <div class="subject-check-name">Mathematics</div>
-        <div class="subject-check-tick">
-          <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
+        <div class="subject-check-tick"><svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       </div>
       <div class="subject-check" onclick="toggleSubject(this,'Physical Sciences')" data-value="Physical Sciences">
         <div class="subject-check-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2C8 2 4 6.5 4 12s4 10 8 10 8-4.5 8-10S16 2 12 2z"/><path d="M2 12h20"/></svg>
         </div>
         <div class="subject-check-name">Physical Sciences</div>
-        <div class="subject-check-tick">
-          <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
+        <div class="subject-check-tick"><svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       </div>
       <div class="subject-check" onclick="toggleSubject(this,'Both')" data-value="Both">
         <div class="subject-check-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
         </div>
         <div class="subject-check-name">Both</div>
-        <div class="subject-check-tick">
-          <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
+        <div class="subject-check-tick"><svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       </div>
     </div>
     <span class="error-msg" id="err-subjects" style="margin-bottom:12px;display:none;">Please select at least one subject.</span>
     <div class="form-group">
-      <label for="helpNeeded">Where do you feel you need the most help? <span class="req">*</span></label>
-      <textarea id="helpNeeded" placeholder="Describe the specific areas or topics where the learner struggles most..."></textarea>
-      <span class="error-msg" id="err-helpNeeded">Please describe where you need help.</span>
+      <label for="helpNeeded">Key Challenges or Weak Areas <span class="req">*</span></label>
+      <textarea id="helpNeeded" placeholder="Describe the specific topics or areas where the learner struggles most..."></textarea>
+      <span class="error-msg" id="err-helpNeeded">Please describe where the learner needs help.</span>
+    </div>
+    <div class="form-group">
+      <label for="academicGoal">Academic Goals</label>
+      <input type="text" id="academicGoal" placeholder="e.g. Pass Maths with 70%+ by end of year"/>
     </div>
     <div class="btn-row">
       <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
@@ -563,45 +374,54 @@
     </div>
   </div>
 
-  <!-- STEP 3: COMMITMENT -->
+  <!-- STEP 3: MENTORSHIP COMMITMENT -->
   <div class="step-card" id="step-3">
     <p class="step-eyebrow">Step 3 of 5</p>
-    <h2 class="step-title-text">Commitment to the Process</h2>
-    <p class="step-desc">The Sirzone is built on discipline and consistency. Please read and confirm each commitment.</p>
+    <h2 class="step-title-text">Mentorship Commitment</h2>
+    <p class="step-desc">Sirzone is built on structure, consistency, and accountability. Please confirm that both learner and parent understand the commitments required for this program.</p>
     <div class="commitment-header">
-      <p><strong>"I understand that success in this programme requires consistency, effort, and participation."</strong><br/>Please confirm your commitment to each of the following:</p>
+      <p><strong>"I understand that success in this program requires consistency, effort, accountability, and participation."</strong><br/>Please confirm each commitment below:</p>
     </div>
     <div class="checkbox-group" id="commitmentGroup">
       <div class="checkbox-item" onclick="toggleCheckbox(this)">
-        <div class="cb-box">
-          <svg class="cb-check" width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </div>
-        <div class="cb-label">I will attend sessions consistently</div>
+        <div class="cb-box"><svg class="cb-check" width="11" height="11" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="cb-label">I understand that regular attendance is required.</div>
         <input type="checkbox" name="commit1"/>
       </div>
       <div class="checkbox-item" onclick="toggleCheckbox(this)">
-        <div class="cb-box">
-          <svg class="cb-check" width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </div>
-        <div class="cb-label">I will complete and submit tasks</div>
+        <div class="cb-box"><svg class="cb-check" width="11" height="11" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="cb-label">I understand that tasks must be completed and submitted on time.</div>
         <input type="checkbox" name="commit2"/>
       </div>
       <div class="checkbox-item" onclick="toggleCheckbox(this)">
-        <div class="cb-box">
-          <svg class="cb-check" width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </div>
-        <div class="cb-label">I will ask questions when I need help</div>
+        <div class="cb-box"><svg class="cb-check" width="11" height="11" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="cb-label">I understand that learner progress depends on effort, participation, and consistency.</div>
         <input type="checkbox" name="commit3"/>
       </div>
       <div class="checkbox-item" onclick="toggleCheckbox(this)">
-        <div class="cb-box">
-          <svg class="cb-check" width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </div>
-        <div class="cb-label">I understand that progress depends on my effort</div>
+        <div class="cb-box"><svg class="cb-check" width="11" height="11" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="cb-label">I understand that parents/guardians may be contacted regarding learner progress where relevant.</div>
         <input type="checkbox" name="commit4"/>
+      </div>
+      <div class="checkbox-item" onclick="toggleCheckbox(this)">
+        <div class="cb-box"><svg class="cb-check" width="11" height="11" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="cb-label">I understand that payments are due upfront and are non-refundable.</div>
+        <input type="checkbox" name="commit5"/>
       </div>
     </div>
     <span class="error-msg" id="err-commitment" style="margin-top:10px;">Please confirm all commitments to continue.</span>
+    <div class="divider"></div>
+    <div class="section-label">Confirmation Signatures</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="learnerConfirmName">Learner Full Name (as confirmation)</label>
+        <input type="text" id="learnerConfirmName" placeholder="Type learner's full name"/>
+      </div>
+      <div class="form-group">
+        <label for="parentConfirmName">Parent / Guardian Name (as confirmation)</label>
+        <input type="text" id="parentConfirmName" placeholder="Type parent/guardian's full name"/>
+      </div>
+    </div>
     <div class="btn-row">
       <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
       <button class="btn btn-primary" onclick="validateAndNext(3)">Continue →</button>
@@ -612,37 +432,89 @@
   <div class="step-card" id="step-4">
     <p class="step-eyebrow">Step 4 of 5</p>
     <h2 class="step-title-text">Choose Your Plan</h2>
-    <p class="step-desc">Select the programme that best fits your learning needs.</p>
+    <p class="step-desc">Select the mentorship plan that best matches the learner's academic needs and preferred starting point.</p>
     <div class="plan-options" id="planOptions">
-      <div class="plan-option" onclick="selectPlan(this,'Maths/Physics Plan — R1,200/month')">
-        <div class="radio-dot"><div class="radio-inner"></div></div>
-        <div class="plan-option-info">
-          <div class="plan-option-name">Mathematics Plan</div>
-          <div class="plan-option-detail">1 session per week · Structured lessons · Task guidance · Feedback · WhatsApp support</div>
+
+      <div class="plan-option" onclick="selectPlan(this,'Foundation Plan — R1,200/month')">
+        <div class="plan-option-header">
+          <div class="radio-dot"><div class="radio-inner"></div></div>
+          <div class="plan-option-name">Foundation Plan</div>
+          <div class="plan-option-price">R1,200<span style="font-size:11px;font-weight:500;">/mo</span></div>
+          <input type="radio" name="plan" value="Foundation Plan — R1,200/month"/>
         </div>
-        <div class="plan-option-price">R1,200<span style="font-size:12px;font-weight:500;">/mo</span></div>
-        <input type="radio" name="plan" value="Mathematics Plan — R1,200/month"/>
+        <div class="plan-option-detail">Best for: Steady support in one subject · Maths or Physical Sciences</div>
+        <ul class="plan-features-inline">
+          <li>1 weekly 1-hour session</li>
+          <li>Task submission and feedback</li>
+          <li>WhatsApp support (business hours)</li>
+          <li>Monthly progress report</li>
+        </ul>
       </div>
-      <div class="plan-option" onclick="selectPlan(this,'Math + Science Plan — R1,800/month')">
-        <div class="radio-dot"><div class="radio-inner"></div></div>
-        <div class="plan-option-info">
-          <div class="plan-option-name">Math + Science Plan <span style="font-size:11px;background:var(--green);color:white;padding:2px 8px;border-radius:100px;margin-left:6px;vertical-align:middle;">Popular</span></div>
-          <div class="plan-option-detail">2 sessions per week · Maths + Physical Sciences · Task feedback · Priority support</div>
+
+      <div class="plan-option" onclick="selectPlan(this,'Acceleration Plan — R1,800/month')">
+        <div class="plan-option-header">
+          <div class="radio-dot"><div class="radio-inner"></div></div>
+          <div class="plan-option-name">Acceleration Plan</div>
+          <div class="plan-popular-tag">Most Popular</div>
+          <div class="plan-option-price">R1,800<span style="font-size:11px;font-weight:500;">/mo</span></div>
+          <input type="radio" name="plan" value="Acceleration Plan — R1,800/month"/>
         </div>
-        <div class="plan-option-price">R1,800<span style="font-size:12px;font-weight:500;">/mo</span></div>
-        <input type="radio" name="plan" value="Math + Science Plan — R1,800/month"/>
+        <div class="plan-option-detail">Best for: Dual-subject support or moderate learning gaps · Maths + Physical Sciences</div>
+        <ul class="plan-features-inline">
+          <li>2 weekly 1-hour sessions</li>
+          <li>Priority task feedback</li>
+          <li>WhatsApp support</li>
+          <li>Bi-monthly parent updates</li>
+        </ul>
       </div>
-      <div class="plan-option" onclick="selectPlan(this,'1-on-1 Mentorship — Custom Pricing')">
-        <div class="radio-dot"><div class="radio-inner"></div></div>
-        <div class="plan-option-info">
-          <div class="plan-option-name">1-on-1 Mentorship</div>
-          <div class="plan-option-detail">Private sessions · Personalised plan · Flexible scheduling · Direct tutor access</div>
+
+      <div class="plan-option" onclick="selectPlan(this,'Elite Mastery Plan — R2,500/month')">
+        <div class="plan-option-header">
+          <div class="radio-dot"><div class="radio-inner"></div></div>
+          <div class="plan-option-name">Elite Mastery Plan</div>
+          <div class="plan-option-price">R2,500<span style="font-size:11px;font-weight:500;">/mo</span></div>
+          <input type="radio" name="plan" value="Elite Mastery Plan — R2,500/month"/>
         </div>
-        <div class="plan-option-price" style="font-size:15px;">Custom</div>
-        <input type="radio" name="plan" value="1-on-1 Mentorship — Custom Pricing"/>
+        <div class="plan-option-detail">Best for: Matric learners or intensive catch-up</div>
+        <ul class="plan-features-inline">
+          <li>2 weekly 1.5-hour sessions</li>
+          <li>Custom exam mock papers</li>
+          <li>WhatsApp + daily check-ins</li>
+          <li>Quarterly performance reviews</li>
+        </ul>
       </div>
+
     </div>
     <span class="error-msg" id="err-plan" style="margin-top:10px;">Please select a plan to continue.</span>
+
+    <div class="divider"></div>
+    <div class="section-label">Additional Preferences</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="startPhase">Preferred Start Phase</label>
+        <select id="startPhase">
+          <option value="">Select a phase</option>
+          <option>Foundation Phase (Jan–Feb)</option>
+          <option>Mastery Phase (Mar–Jun)</option>
+          <option>Performance Phase (Jul–Sep)</option>
+          <option>Exam Acceleration Phase (Oct–Exams)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="startDate">Preferred Start Date</label>
+        <input type="date" id="startDate"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="paymentOption">Payment Option</label>
+      <select id="paymentOption">
+        <option value="">Select payment option</option>
+        <option>Monthly upfront</option>
+        <option>Quarterly upfront (10% discount)</option>
+      </select>
+    </div>
+    <div class="payment-note">Payments are billed in advance. Quarterly upfront payments receive a 10% discount. Payments are non-refundable.</div>
+
     <div class="btn-row">
       <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
       <button class="btn btn-primary" onclick="validateAndNext(4)">Continue →</button>
@@ -652,18 +524,18 @@
   <!-- STEP 5: REVIEW & SUBMIT -->
   <div class="step-card" id="step-5">
     <p class="step-eyebrow">Step 5 of 5</p>
-    <h2 class="step-title-text">Review &amp; Submit</h2>
-    <p class="step-desc">Please review your application details before submitting.</p>
+    <h2 class="step-title-text">Review Your Application</h2>
+    <p class="step-desc">Please review all learner, parent, plan, and payment details before submitting your application.</p>
 
     <div class="review-section">
       <div class="review-section-title">Learner Information</div>
       <div class="review-grid" id="reviewLearner"></div>
     </div>
-    <div class="review-section" style="margin-top:20px;">
+    <div class="review-section" style="margin-top:18px;">
       <div class="review-section-title">Academic Information</div>
       <div class="review-grid" id="reviewAcademic"></div>
     </div>
-    <div class="review-section" style="margin-top:20px;">
+    <div class="review-section" style="margin-top:18px;">
       <div class="review-section-title">Selected Plan</div>
       <div class="review-plan" id="reviewPlan"></div>
     </div>
@@ -671,10 +543,8 @@
     <div class="divider"></div>
 
     <div class="confirm-check" id="finalConfirm" onclick="toggleFinalConfirm()">
-      <div class="cb-box">
-        <svg class="cb-check" width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
-      </div>
-      <div class="confirm-text">I confirm that all information provided is accurate and I understand the commitment required to participate in The Sirzone programme.</div>
+      <div class="cb-box"><svg class="cb-check" width="11" height="11" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div class="confirm-text">I confirm that all information provided is accurate and I understand the commitment required to participate in the Sirzone Academic Acceleration Program.</div>
     </div>
     <span class="error-msg" id="err-confirm">Please confirm the accuracy of your information.</span>
 
@@ -690,37 +560,40 @@
       <input type="hidden" name="sciMark" id="fn-sciMark"/>
       <input type="hidden" name="subjects" id="fn-subjects"/>
       <input type="hidden" name="helpNeeded" id="fn-helpNeeded"/>
+      <input type="hidden" name="academicGoal" id="fn-academicGoal"/>
       <input type="hidden" name="plan" id="fn-plan"/>
-      <input type="hidden" name="_subject" value="New Application — The Sirzone"/>
+      <input type="hidden" name="startPhase" id="fn-startPhase"/>
+      <input type="hidden" name="startDate" id="fn-startDate"/>
+      <input type="hidden" name="paymentOption" id="fn-paymentOption"/>
+      <input type="hidden" name="learnerConfirmName" id="fn-learnerConfirmName"/>
+      <input type="hidden" name="parentConfirmName" id="fn-parentConfirmName"/>
+      <input type="hidden" name="_subject" value="New Application — Sirzone Academic Acceleration Program"/>
     </form>
 
-    <button class="btn btn-primary btn-full" id="submitBtn" onclick="submitApplication()">Submit Application →</button>
-    <div class="btn-row" style="margin-top:12px;">
-      <button class="btn btn-secondary" onclick="prevStep()" style="width:100%;justify-content:center;">← Back</button>
-    </div>
+    <button class="btn btn-primary btn-full" id="submitBtn" onclick="submitApplication()" style="margin-bottom:12px;">Submit Application →</button>
+    <button class="btn btn-secondary btn-full" onclick="prevStep()">← Back</button>
   </div>
 
   <!-- SUCCESS SCREEN -->
-  <div class="step-card" id="step-success" style="text-align:center;">
+  <div class="step-card" id="step-success">
     <div class="success-screen">
       <div class="success-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
       </div>
       <h2 class="success-title">Application Received</h2>
-      <p class="success-msg">Thank you for applying to The Sirzone. We will review your application and contact you shortly with the next steps.</p>
+      <p class="success-msg-text">Thank you for applying to the Sirzone Academic Acceleration Program. We will review your application and contact you shortly regarding placement, onboarding, and payment.</p>
       <a href="https://wa.me/27795178174" target="_blank" class="success-wa">
-        <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Prefer faster assistance? Chat on WhatsApp
-      </a>
-      <a href="index.html" class="success-back">← Return to The Sirzone website</a>
+        <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
+      </a><br/>
+      <a href="/" class="success-back">← Return to The Sirzone website</a>
     </div>
   </div>
 
-</div><!-- end app-wrap -->
+</div>
 
 <script>
 let currentStep = 0;
-const TOTAL_STEPS = 6; // 0=intro, 1-5=form steps, success=separate
 const selectedSubjects = new Set();
 let selectedPlan = '';
 let finalConfirmed = false;
@@ -730,74 +603,76 @@ function showStep(n) {
   document.getElementById('step-' + n).classList.add('active');
   currentStep = n;
   updateProgress();
-  window.scrollTo({top: 0, behavior: 'smooth'});
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function updateProgress() {
   const wrap = document.getElementById('progressWrap');
-  if(currentStep === 0 || document.getElementById('step-success').classList.contains('active')) {
+  if (currentStep === 0 || document.getElementById('step-success').classList.contains('active')) {
     wrap.style.display = 'none'; return;
   }
   wrap.style.display = 'block';
-  const stepNum = currentStep; // 1-5
-  for(let i = 0; i < 6; i++) {
+  const stepNum = currentStep;
+  for (let i = 0; i < 6; i++) {
     const dot = document.getElementById('dot-' + i);
     const lbl = document.getElementById('lbl-' + i);
-    if(i < stepNum) { dot.classList.remove('active'); dot.classList.add('done'); dot.innerHTML = '✓'; lbl.classList.remove('active'); lbl.classList.add('done'); }
-    else if(i === stepNum) { dot.classList.add('active'); dot.classList.remove('done'); dot.innerHTML = i+1; lbl.classList.add('active'); lbl.classList.remove('done'); }
-    else { dot.classList.remove('active','done'); dot.innerHTML = i+1; lbl.classList.remove('active','done'); }
-    if(i < 5) { const line = document.getElementById('line-' + i); if(i < stepNum) line.classList.add('done'); else line.classList.remove('done'); }
+    if (i < stepNum) { dot.classList.remove('active'); dot.classList.add('done'); dot.innerHTML = '<svg width="11" height="11" fill="none" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>'; lbl.classList.remove('active'); lbl.classList.add('done'); }
+    else if (i === stepNum) { dot.classList.add('active'); dot.classList.remove('done'); dot.innerHTML = i + 1; lbl.classList.add('active'); lbl.classList.remove('done'); }
+    else { dot.classList.remove('active', 'done'); dot.innerHTML = i + 1; lbl.classList.remove('active', 'done'); }
+    if (i < 5) { const line = document.getElementById('line-' + i); if (i < stepNum) line.classList.add('done'); else line.classList.remove('done'); }
   }
   document.getElementById('progressMeta').textContent = 'Step ' + stepNum + ' of 5';
 }
 
-function nextStep() { showStep(currentStep + 1); }
+function nextStep() {
+  if (currentStep === 4) buildReview();
+  showStep(currentStep + 1);
+}
 function prevStep() { showStep(currentStep - 1); }
 
-// Validation rules per step
 function validateStep(step) {
-  if(step === 1) {
+  if (step === 1) {
     let ok = true;
     const fields = [
-      {id:'learnerName', errId:'err-learnerName', validate: v => v.trim().length > 1},
-      {id:'dob', errId:'err-dob', validate: v => v !== ''},
-      {id:'school', errId:'err-school', validate: v => v.trim().length > 1},
-      {id:'grade', errId:'err-grade', validate: v => v !== ''},
-      {id:'parentName', errId:'err-parentName', validate: v => v.trim().length > 1},
-      {id:'parentPhone', errId:'err-parentPhone', validate: v => v.trim().length > 6},
-      {id:'emailAddr', errId:'err-emailAddr', validate: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)},
+      { id: 'learnerName', errId: 'err-learnerName', validate: v => v.trim().length > 1 },
+      { id: 'dob', errId: 'err-dob', validate: v => v !== '' },
+      { id: 'school', errId: 'err-school', validate: v => v.trim().length > 1 },
+      { id: 'grade', errId: 'err-grade', validate: v => v !== '' },
+      { id: 'parentName', errId: 'err-parentName', validate: v => v.trim().length > 1 },
+      { id: 'parentPhone', errId: 'err-parentPhone', validate: v => v.trim().length > 6 },
+      { id: 'emailAddr', errId: 'err-emailAddr', validate: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
     ];
     fields.forEach(f => {
       const el = document.getElementById(f.id);
       const err = document.getElementById(f.errId);
-      if(!f.validate(el.value)) { el.classList.add('error'); err.classList.add('show'); ok = false; }
+      if (!f.validate(el.value)) { el.classList.add('error'); err.classList.add('show'); ok = false; }
       else { el.classList.remove('error'); err.classList.remove('show'); }
     });
     return ok;
   }
-  if(step === 2) {
+  if (step === 2) {
     let ok = true;
     const mathEl = document.getElementById('mathMark');
     const mathErr = document.getElementById('err-mathMark');
     const mathVal = parseInt(mathEl.value);
-    if(isNaN(mathVal) || mathVal < 0 || mathVal > 100) { mathEl.classList.add('error'); mathErr.classList.add('show'); ok = false; }
+    if (isNaN(mathVal) || mathVal < 0 || mathVal > 100) { mathEl.classList.add('error'); mathErr.classList.add('show'); ok = false; }
     else { mathEl.classList.remove('error'); mathErr.classList.remove('show'); }
     const subErr = document.getElementById('err-subjects');
-    if(selectedSubjects.size === 0) { subErr.classList.add('show'); ok = false; }
+    if (selectedSubjects.size === 0) { subErr.classList.add('show'); ok = false; }
     else { subErr.classList.remove('show'); }
     const helpEl = document.getElementById('helpNeeded');
     const helpErr = document.getElementById('err-helpNeeded');
-    if(helpEl.value.trim().length < 5) { helpEl.classList.add('error'); helpErr.classList.add('show'); ok = false; }
+    if (helpEl.value.trim().length < 5) { helpEl.classList.add('error'); helpErr.classList.add('show'); ok = false; }
     else { helpEl.classList.remove('error'); helpErr.classList.remove('show'); }
     return ok;
   }
-  if(step === 3) {
+  if (step === 3) {
     const items = document.querySelectorAll('#commitmentGroup .checkbox-item');
     const allChecked = Array.from(items).every(i => i.classList.contains('checked'));
     document.getElementById('err-commitment').classList.toggle('show', !allChecked);
     return allChecked;
   }
-  if(step === 4) {
+  if (step === 4) {
     const ok = selectedPlan !== '';
     document.getElementById('err-plan').classList.toggle('show', !ok);
     return ok;
@@ -805,19 +680,17 @@ function validateStep(step) {
   return true;
 }
 
-function validateAndNext(step) {
-  if(validateStep(step)) nextStep();
-}
+function validateAndNext(step) { if (validateStep(step)) nextStep(); }
 
 function toggleCheckbox(item) {
   item.classList.toggle('checked');
   const cb = item.querySelector('input[type="checkbox"]');
-  if(cb) cb.checked = item.classList.contains('checked');
+  if (cb) cb.checked = item.classList.contains('checked');
 }
 
 function toggleSubject(el, value) {
   el.classList.toggle('selected');
-  if(el.classList.contains('selected')) selectedSubjects.add(value);
+  if (el.classList.contains('selected')) selectedSubjects.add(value);
   else selectedSubjects.delete(value);
 }
 
@@ -826,7 +699,7 @@ function selectPlan(el, value) {
   el.classList.add('selected');
   selectedPlan = value;
   const radio = el.querySelector('input[type="radio"]');
-  if(radio) radio.checked = true;
+  if (radio) radio.checked = true;
 }
 
 function toggleFinalConfirm() {
@@ -836,40 +709,26 @@ function toggleFinalConfirm() {
 }
 
 function buildReview() {
-  const ri = document.getElementById('reviewLearner');
-  ri.innerHTML = `
+  document.getElementById('reviewLearner').innerHTML = `
     <div class="review-item"><div class="review-item-label">Learner Name</div><div class="review-item-value">${document.getElementById('learnerName').value}</div></div>
     <div class="review-item"><div class="review-item-label">Date of Birth</div><div class="review-item-value">${document.getElementById('dob').value}</div></div>
     <div class="review-item"><div class="review-item-label">School</div><div class="review-item-value">${document.getElementById('school').value}</div></div>
     <div class="review-item"><div class="review-item-label">Grade</div><div class="review-item-value">${document.getElementById('grade').value}</div></div>
-    <div class="review-item"><div class="review-item-label">Parent/Guardian</div><div class="review-item-value">${document.getElementById('parentName').value}</div></div>
+    <div class="review-item"><div class="review-item-label">Parent / Guardian</div><div class="review-item-value">${document.getElementById('parentName').value}</div></div>
     <div class="review-item"><div class="review-item-label">Contact</div><div class="review-item-value">${document.getElementById('parentPhone').value}</div></div>
   `;
-  const ra = document.getElementById('reviewAcademic');
-  ra.innerHTML = `
-    <div class="review-item"><div class="review-item-label">Math Mark</div><div class="review-item-value">${document.getElementById('mathMark').value || '—'}%</div></div>
-    <div class="review-item"><div class="review-item-label">Science Mark</div><div class="review-item-value">${document.getElementById('sciMark').value || '—'}%</div></div>
+  document.getElementById('reviewAcademic').innerHTML = `
+    <div class="review-item"><div class="review-item-label">Maths Mark</div><div class="review-item-value">${document.getElementById('mathMark').value || '—'}%</div></div>
+    <div class="review-item"><div class="review-item-label">Sciences Mark</div><div class="review-item-value">${document.getElementById('sciMark').value || '—'}%</div></div>
     <div class="review-item" style="grid-column:1/-1;"><div class="review-item-label">Subjects</div><div class="review-item-value">${[...selectedSubjects].join(', ') || '—'}</div></div>
   `;
   const planParts = selectedPlan.split('—');
-  const rp = document.getElementById('reviewPlan');
-  rp.innerHTML = `<div class="review-plan-name">${planParts[0] || selectedPlan}</div><div class="review-plan-price">${planParts[1] || ''}</div>`;
-}
-
-// Override nextStep for step 4 -> 5 to build review
-const _nextStep = nextStep;
-function nextStep() {
-  if(currentStep === 4) { buildReview(); }
-  showStep(currentStep + 1);
+  document.getElementById('reviewPlan').innerHTML = `<div class="review-plan-name">${planParts[0] || selectedPlan}</div><div class="review-plan-price">${planParts[1] || ''}</div>`;
 }
 
 async function submitApplication() {
-  if(!finalConfirmed) {
-    document.getElementById('err-confirm').classList.add('show');
-    return;
-  }
+  if (!finalConfirmed) { document.getElementById('err-confirm').classList.add('show'); return; }
   document.getElementById('err-confirm').classList.remove('show');
-  // populate hidden form
   document.getElementById('fn-learnerName').value = document.getElementById('learnerName').value;
   document.getElementById('fn-dob').value = document.getElementById('dob').value;
   document.getElementById('fn-school').value = document.getElementById('school').value;
@@ -881,31 +740,28 @@ async function submitApplication() {
   document.getElementById('fn-sciMark').value = document.getElementById('sciMark').value;
   document.getElementById('fn-subjects').value = [...selectedSubjects].join(', ');
   document.getElementById('fn-helpNeeded').value = document.getElementById('helpNeeded').value;
+  document.getElementById('fn-academicGoal').value = document.getElementById('academicGoal').value;
   document.getElementById('fn-plan').value = selectedPlan;
+  document.getElementById('fn-startPhase').value = document.getElementById('startPhase').value;
+  document.getElementById('fn-startDate').value = document.getElementById('startDate').value;
+  document.getElementById('fn-paymentOption').value = document.getElementById('paymentOption').value;
+  document.getElementById('fn-learnerConfirmName').value = document.getElementById('learnerConfirmName').value;
+  document.getElementById('fn-parentConfirmName').value = document.getElementById('parentConfirmName').value;
 
   const btn = document.getElementById('submitBtn');
   btn.textContent = 'Submitting...'; btn.disabled = true;
-
   try {
     const form = document.getElementById('applicationForm');
-    const res = await fetch(form.action, {
-      method: 'POST', body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    });
-    if(res.ok) {
+    const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+    if (res.ok) {
       document.querySelectorAll('.step-card').forEach(c => c.classList.remove('active'));
       document.getElementById('step-success').classList.add('active');
       document.getElementById('progressWrap').style.display = 'none';
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    } else {
-      btn.textContent = 'Error — Try Again'; btn.disabled = false;
-    }
-  } catch {
-    btn.textContent = 'Error — Try Again'; btn.disabled = false;
-  }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else { btn.textContent = 'Error — Try Again'; btn.disabled = false; }
+  } catch { btn.textContent = 'Error — Try Again'; btn.disabled = false; }
 }
 
-// init
 updateProgress();
 </script>
 </body>
