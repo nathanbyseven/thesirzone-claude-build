@@ -1,0 +1,27 @@
+{
+  "name": "thesirzone",
+  "version": "1.0.0",
+  "description": "The Sirzone - Academic Excellence Platform",
+  "scripts": {
+    "dev": "npx http-server -p 3000",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathanbyseven/thesirzone-claude-build.git"
+  },
+  "keywords": [
+    "education",
+    "tutoring",
+    "academic"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathanbyseven/thesirzone-claude-build/issues"
+  },
+  "homepage": "https://github.com/nathanbyseven/thesirzone-claude-build#readme",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
